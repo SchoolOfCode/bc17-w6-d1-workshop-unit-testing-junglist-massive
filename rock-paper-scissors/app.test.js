@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { calculateRoundResult, DRAW, WIN, LOSS, ROCK, PAPER, SCISSORS } from './app.js'
+import { calculateRoundResult, DRAW, WIN, LOSS, ROCK, PAPER, SCISSORS, calculateNewScores } from './app.js'
 
 test('draws', () => {
   expect.soft(calculateRoundResult("rock", "rock")).toEqual({
@@ -54,3 +54,17 @@ test('errors', () => {
     'Invalid player move (rock) or computer move sdkjfhadjfh',
   )
 })
+
+test("score", ()=>{
+  expect.soft( calculateNewScores({playerScoreCounter: 0,
+    computerScoreCounter: 0,
+    drawCounter: 0,
+}))
+
+})
+
+calculateNewScores({
+playerScoreCounter: 0,
+computerScoreCounter: 0,
+drawCounter: 0,
+    }, 'win')
