@@ -30,3 +30,18 @@ test('win', () => {
     message: "Player chose paper and computer chose rock. Player wins.",
   })
 })
+
+test('loss', () => {
+  expect.soft(calculateRoundResult("scissors","rock")).toEqual({
+    outcome: LOSS,
+    message: "Player chose scissors and computer chose rock. Computer wins.",
+  })
+  expect.soft(calculateRoundResult("paper","scissors")).toEqual({
+    outcome: LOSS,
+    message: "Player chose paper and computer chose scissors. Computer wins.",
+  })
+  expect.soft(calculateRoundResult("rock","paper")).toEqual({
+    outcome: LOSS,
+    message: "Player chose rock and computer chose paper. Computer wins.",
+  })
+})
