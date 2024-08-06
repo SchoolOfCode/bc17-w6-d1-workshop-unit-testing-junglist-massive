@@ -2,16 +2,31 @@ import { expect, test } from 'vitest'
 import { calculateRoundResult, DRAW, WIN, LOSS, ROCK, PAPER, SCISSORS } from './app.js'
 
 test('draws', () => {
-  expect.soft(calculateRoundResult("rock", "rock")).toBe({
+  expect.soft(calculateRoundResult("rock", "rock")).toEqual({
     outcome: DRAW,
     message: "Both players chose rock. It's a draw.",
   })
-  expect.soft(calculateRoundResult("scissors", "scissors")).toBe({
+  expect.soft(calculateRoundResult("scissors", "scissors")).toEqual({
     outcome: DRAW,
     message: "Both players chose scissors. It's a draw.",
   })
-  expect.soft(calculateRoundResult("paper", "paper")).toBe({
+  expect.soft(calculateRoundResult("paper", "paper")).toEqual({
     outcome: DRAW,
     message: "Both players chose paper. It's a draw.",
+  })
+})
+
+test('win', () => {
+  expect.soft(calculateRoundResult("rock","scissors")).toEqual({
+    outcome: WIN,
+    message: "Player chose rock and computer chose scissors. Player wins.",
+  })
+  expect.soft(calculateRoundResult("scissors","paper")).toEqual({
+    outcome: WIN,
+    message: "Player chose scissors and computer chose paper. Player wins.",
+  })
+  expect.soft(calculateRoundResult("paper","rock")).toEqual({
+    outcome: WIN,
+    message: "Player chose paper and computer chose rock. Player wins.",
   })
 })
