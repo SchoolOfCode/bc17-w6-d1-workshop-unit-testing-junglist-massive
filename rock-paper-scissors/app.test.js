@@ -45,3 +45,12 @@ test('loss', () => {
     message: "Player chose rock and computer chose paper. Computer wins.",
   })
 })
+
+test('errors', () => {
+  expect.soft(() => calculateRoundResult("sfdljkasdhfjh","rock")).toThrowError(
+    'Invalid player move (sfdljkasdhfjh) or computer move rock',
+  )
+  expect.soft(() => calculateRoundResult("rock","sdkjfhadjfh")).toThrowError(
+    'Invalid player move (rock) or computer move sdkjfhadjfh',
+  )
+})
